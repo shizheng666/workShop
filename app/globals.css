@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #09111f;
+  --foreground: #eef4ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+}
+
+:root {
+  --color-paper: #09111f;
+  --color-panel: #101b2e;
+  --color-panel-soft: #16243b;
+  --color-elevated: #1a2a44;
+  --color-elevated-strong: #223754;
+  --color-line: rgba(160, 185, 223, 0.24);
+  --color-line-strong: rgba(193, 213, 244, 0.36);
+  --color-ink: #f5f9ff;
+  --color-muted-ink: #c3d0e3;
+  --color-night: #050b14;
+  --color-accent: #6ab0ff;
+  --color-accent-strong: #dceaff;
+  --color-success: #38b879;
+  --color-danger: #ff7b72;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top left, rgba(101, 165, 255, 0.18), transparent 28%),
+      radial-gradient(circle at top right, rgba(214, 224, 240, 0.08), transparent 20%),
+      radial-gradient(circle at 80% 20%, rgba(76, 130, 210, 0.1), transparent 18%),
+      var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body), sans-serif;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
