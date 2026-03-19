@@ -28,13 +28,18 @@ export type PersonProfile = {
 };
 
 export type SubmissionPortal = {
+  siteStatus: "pending" | "ready";
   label: string;
   title: string;
   description: string;
   portalName: string;
   portalUrl: string;
   ctaLabel: string;
+  pendingLabel: string;
   status: string;
+  officialNotice: string;
+  requestChecklist: string[];
+  supportEmail: string;
   dataAccessNote: string;
   attendanceNote: string;
   policyNote: string;
@@ -255,15 +260,25 @@ export const workshopContent = {
   // 这里把投稿入口、评审和政策类信息全部集中在内容配置里，
   // 后续拿到正式 CMT 链接或更新政策文字时，不需要去多个页面组件里重复修改。
   submissionPortal: {
+    siteStatus: "pending",
     label: "Paper Submission",
     title: "Paper Submission via CMT",
     description:
       "Authors should submit papers through CMT. CMT is used for submission and review management for the HVG workshop.",
     portalName: "CMT",
     portalUrl: "",
-    ctaLabel: "Workshop CMT link coming soon",
+    ctaLabel: "Official CMT Portal",
+    pendingLabel: "CMT portal pending",
     status:
       "The workshop-specific CMT portal URL will be published once the submission site is activated.",
+    officialNotice:
+      "The official CMT submission entrance will be announced on this page after the workshop site request is approved.",
+    requestChecklist: [
+      "Site request in progress with the workshop organizers and chairs.",
+      "Official submission URL awaiting activation in Microsoft CMT.",
+      "Website button will be updated immediately after approval.",
+    ],
+    supportEmail: "contact@workshop-placeholder.org",
     dataAccessNote:
       "Workshop chairs with appropriate CMT permissions can access submission-side metadata such as paper titles, abstracts, author names, author emails, primary contact author details, and review-process-related records. CMT does not replace general conference attendance registration.",
     attendanceNote:

@@ -1,9 +1,13 @@
 import Link from "next/link";
 
 import { WorkshopHeader } from "@/components/workshop/site-header";
-import { workshopContent } from "@/lib/workshop-content";
+import { workshopContent, type SubmissionPortal } from "@/lib/workshop-content";
 
 export function Hero() {
+  const submissionPortal = workshopContent.submissionPortal as SubmissionPortal;
+  const submissionStatusLabel =
+    submissionPortal.siteStatus === "ready" ? "CMT portal available" : submissionPortal.pendingLabel;
+
   return (
     <section className="relative overflow-hidden border-b border-white/10">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(106,176,255,0.22),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(181,198,224,0.12),_transparent_36%),linear-gradient(180deg,_rgba(7,14,25,0.92),_rgba(7,14,25,1))]" />
@@ -36,6 +40,9 @@ export function Hero() {
               >
                 Submit via CMT
               </Link>
+              <span className="inline-flex min-h-12 items-center justify-center rounded-full border border-[rgba(106,176,255,0.28)] bg-[rgba(106,176,255,0.14)] px-5 text-sm font-semibold text-[var(--color-accent-strong)]">
+                {submissionStatusLabel}
+              </span>
               <Link
                 href="/schedule"
                 className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/16 bg-white/6 px-6 text-sm font-semibold text-white transition hover:bg-white/10"
