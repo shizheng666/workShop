@@ -23,11 +23,28 @@ describe("workshopContent", () => {
     expect(workshopContent.generalChairs[0].name).toBe("Siyu Zhu");
     expect(workshopContent.generalChairs.some((member) => member.name === "Michael J. Black")).toBe(true);
     expect(workshopContent.submissionPortal.portalName).toBe("CMT");
+    expect(["pending", "ready"]).toContain(workshopContent.submissionPortal.siteStatus);
+    expect(workshopContent.submissionPortal.pendingLabel).toBeTruthy();
+    expect(workshopContent.submissionPortal.officialNotice).toBeTruthy();
+    expect(workshopContent.submissionPortal.requestChecklist.length).toBeGreaterThan(0);
+    expect(workshopContent.submissionPortal.supportEmail).toBeTruthy();
     expect(workshopContent.submissionPortal.dataAccessNote.toLowerCase()).toContain("submission");
     expect(workshopContent.submissionPortal.dataAccessNote.toLowerCase()).not.toContain("attendee signup");
     expect(workshopContent.reviewPolicy.timeline.paperSubmissionDeadline).toBe("February 21, 2026 AoE (UTC-12)");
     expect(workshopContent.diversityPolicy.representationSummary.toLowerCase()).toContain("academia");
     expect(workshopContent.ethicsCompliance.items).toHaveLength(2);
     expect(workshopContent.contact.email).toBeTruthy();
+  });
+
+  it("keeps the pending-state submission portal content internally consistent", () => {
+    if (workshopContent.submissionPortal.siteStatus === "pending") {
+      expect(workshopContent.submissionPortal.portalUrl).toBe("");
+      expect(workshopContent.submissionPortal.pendingLabel.toLowerCase()).toContain("pending");
+      expect(workshopContent.submissionPortal.officialNotice.toLowerCase()).toContain("official");
+    }
+
+    if (workshopContent.submissionPortal.siteStatus === "ready") {
+      expect(workshopContent.submissionPortal.portalUrl).toBeTruthy();
+    }
   });
 });

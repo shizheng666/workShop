@@ -23,6 +23,8 @@ describe("Route pages", () => {
 
     expect(screen.getByRole("heading", { name: "Paper Submission via CMT" })).toBeInTheDocument();
     expect(screen.getByText(/cmt is used for submission and review management/i)).toBeInTheDocument();
+    expect(screen.getByText(/pending activation/i)).toBeInTheDocument();
+    expect(screen.getByText(/site request in progress/i)).toBeInTheDocument();
     expect(screen.getByText("Review Policy")).toBeInTheDocument();
     expect(screen.getByText("February 21, 2026 AoE (UTC-12)")).toBeInTheDocument();
     expect(screen.getByText("Diversity & Inclusion")).toBeInTheDocument();

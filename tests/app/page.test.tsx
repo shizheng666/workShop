@@ -19,6 +19,7 @@ describe("Home page", () => {
     expect(screen.getAllByRole("link", { name: "Committee" })[0]).toHaveAttribute("href", "/committee");
     expect(screen.getByRole("link", { name: "Submit via CMT" })).toHaveAttribute("href", "/submission");
     expect(screen.getByRole("link", { name: "Explore Schedule" })).toHaveAttribute("href", "/schedule");
+    expect(screen.getByText("CMT portal pending")).toBeInTheDocument();
 
     expect(screen.getByRole("button", { name: "Overview Snapshot" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Submission Entry" })).toBeInTheDocument();
